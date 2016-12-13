@@ -1,2 +1,2 @@
 # Automatic-Summarization
-Extractive-based summarization using a neural network. This is the final project for my statistical approaches to natural language processing course, Fall 2016
+Extractive-based summarization using a neural network. This is my final project for the Statistical Approaches to Natural Language Processing course, Fall 2016.
