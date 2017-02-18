@@ -25,37 +25,37 @@ def accuracy(classifier, test):
     print("%.2d%% " % (100 * sum(correct) / len(correct)))
     return float(sum(correct)) / len(correct)
 
-#class NaiveBayesTest(TestCase):
+class NaiveBayesTest(TestCase):
 
-    #def split_emails_corpus(self, document_class=BagOfWords):
-    #    emails = EmailCorpus(document_class=document_class)
-    #    seed(hash("emails"))
-    #    shuffle(emails)
-    #    return (emails[:8000], emails[8000:9000], emails[9000:])
+    def split_emails_corpus(self, document_class=BagOfWords):
+        emails = EmailCorpus(document_class=document_class)
+        seed(hash("emails"))
+        shuffle(emails)
+        return (emails[:8000], emails[8000:9000], emails[9000:])
 
-    #def test_emails(self):
-    #    train, dev, test = self.split_emails_corpus()
-    #    classifier = NaiveBayes()
-    #    classifier.train(train)
-    #    acc = accuracy(classifier, test)
-    #    self.assertGreater(acc, .80)
+    def test_emails(self):
+        train, dev, test = self.split_emails_corpus()
+        classifier = NaiveBayes()
+        classifier.train(train)
+        acc = accuracy(classifier, test)
+        self.assertGreater(acc, .80)
 
 class MaxEntTest(TestCase):
     #uTests for the MaxEnt classifier.
 
-    #def split_names_corpus(self, document_class=Name):
-    #    names = NamesCorpus(document_class=document_class)
-    #    self.assertEqual(len(names), 5001 + 2943) # see names/README
-    #    seed(hash("names"))
-    #    shuffle(names)
-    #    return (names[:5000], names[5000:6000], names[6000:])
+    def split_names_corpus(self, document_class=Name):
+        names = NamesCorpus(document_class=document_class)
+        self.assertEqual(len(names), 5001 + 2943) # see names/README
+        seed(hash("names"))
+        shuffle(names)
+        return (names[:5000], names[5000:6000], names[6000:])
 
-    #def test_names_nltk(self):
-    #    train, dev, test = self.split_names_corpus()
-    #    classifier = MaxEnt()
-    #    classifier.train(train)
-    #    acc = accuracy(classifier, test)
-    #    self.assertGreater(acc, 0.70)
+    def test_names_nltk(self):
+        train, dev, test = self.split_names_corpus()
+        classifier = MaxEnt()
+        classifier.train(train)
+        acc = accuracy(classifier, test)
+        self.assertGreater(acc, 0.70)
 
     def split_emails_corpus(self, document_class=BagOfWords):
         emails = EmailCorpus(document_class=document_class)
@@ -70,35 +70,35 @@ class MaxEntTest(TestCase):
         acc = accuracy(max_ent, test)
         self.assertGreater(acc, .80)
 
-    #def split_review_corpus(self, document_class):
-    #    reviews = ReviewCorpus('yelp_reviews.json', document_class=document_class)
-    #    seed(hash("reviews"))
-    #    shuffle(reviews)
-    #    return (reviews[:10000], reviews[10000:14000])
+    def split_review_corpus(self, document_class):
+        reviews = ReviewCorpus('yelp_reviews.json', document_class=document_class)
+        seed(hash("reviews"))
+        shuffle(reviews)
+        return (reviews[:10000], reviews[10000:14000])
 
-    #def test_reviews_bag(self):
-    #    train, test = self.split_review_corpus(BagOfWords)
-    #    classifier = MaxEnt()
-    #    classifier.train(train)
-    #    self.assertGreater(accuracy(classifier, test), 0.55)
+    def test_reviews_bag(self):
+        train, test = self.split_review_corpus(BagOfWords)
+        classifier = MaxEnt()
+        classifier.train(train)
+        self.assertGreater(accuracy(classifier, test), 0.55)
 
 class TestNN(TestCase):
 
-    #def split_names_corpus(self, document_class=Name):
-    #    """Split the names corpus into training, dev, and test sets"""
-    #    names = NamesCorpus(document_class=document_class)
-    #    self.assertEqual(len(names), 5001 + 2943) # see names/README
-    #    seed(hash("names"))
-    #    shuffle(names)
-    #    return (names[:5000], names[5000:6000], names[6000:])
+    def split_names_corpus(self, document_class=Name):
+        """Split the names corpus into training, dev, and test sets"""
+        names = NamesCorpus(document_class=document_class)
+        self.assertEqual(len(names), 5001 + 2943) # see names/README
+        seed(hash("names"))
+        shuffle(names)
+        return (names[:5000], names[5000:6000], names[6000:])
 
-    #def test_names_nltk(self):
-    #    """Classify names using NLTK features"""
-    #    train, dev, test = self.split_names_corpus()
-    #    classifier = MLP()
-    #    classifier.train(train, dev)
-    #    acc = accuracy(classifier, test)
-    #    self.assertGreater(acc, 0.70)
+    def test_names_nltk(self):
+        """Classify names using NLTK features"""
+        train, dev, test = self.split_names_corpus()
+        classifier = MLP()
+        classifier.train(train, dev)
+        acc = accuracy(classifier, test)
+        self.assertGreater(acc, 0.70)
 
     def split_emails_corpus(self, document_class=BagOfWords):
         emails = EmailCorpus(document_class=document_class)
@@ -113,19 +113,19 @@ class TestNN(TestCase):
         acc = accuracy(neural_net, test)
         self.assertGreater(acc, .80)
 
-    #def split_review_corpus(self, document_class):
-    #    """Split the yelp review corpus into training, dev, and test sets"""
-    #    reviews = ReviewCorpus('yelp_reviews.json', document_class=document_class)
-    #    seed(hash("reviews"))
-    #    shuffle(reviews)
-    #    return (reviews[:10000], reviews[10000:11000], reviews[11000:14000])
+    def split_review_corpus(self, document_class):
+        """Split the yelp review corpus into training, dev, and test sets"""
+        reviews = ReviewCorpus('yelp_reviews.json', document_class=document_class)
+        seed(hash("reviews"))
+        shuffle(reviews)
+        return (reviews[:10000], reviews[10000:11000], reviews[11000:14000])
 
-    #def test_reviews_bag(self):
-    #    """Classify sentiment using bag-of-words"""
-    #    train, dev, test = self.split_review_corpus(BagOfWords)
-    #    classifier = MLP()
-    #    classifier.train(train, dev)
-    #    self.assertGreater(accuracy(classifier, test), 0.55)
+    def test_reviews_bag(self):
+        """Classify sentiment using bag-of-words"""
+        train, dev, test = self.split_review_corpus(BagOfWords)
+        classifier = MLP()
+        classifier.train(train, dev)
+        self.assertGreater(accuracy(classifier, test), 0.55)
 
 if __name__ == '__main__':
     # Run all of the tests, print the results, and exit.
