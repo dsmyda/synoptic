@@ -9,17 +9,12 @@ from pickle import dump, load, HIGHEST_PROTOCOL as HIGHEST_PICKLE_PROTOCOL
 class BasicNeuralNet(object):
     """ Basic framework for the different neural networks classes"""
 
-    def __init__(self, hiddenDim = (3,1)):
-        self.hiddenNodes = hiddenDim[0]
-        self.hiddenLayers = hiddenDim[1]
+    def __init__(self, hiddenLayerSizes = []):
+        """ List of hiddenLayer sizes in sequential order. """
+        self.hiddenLayerSize = hiddenLayerSizes
 
     def get_model(self): return None
     def set_model(self, model): pass
-
-    @abstractmethod
-    def activation_function(self, w, x, b):
-        """ x is the vector of inputs, w is the vector of synaptic weights, and b are the biases """
-        pass
 
     @abstractmethod
     def train(self, instances):

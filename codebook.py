@@ -45,8 +45,9 @@ class Codebook:
 
     def supervised_populate(self, instances):
         for instance in instances:
-            for feature, label in zip(instance.features(), instance.label):
-                self.add_feature(feature), self.add_label(label)
+            self.add_label(instance.label)
+            for feature in instance.features():
+                self.add_feature(feature)
 
     def feature_size(self):
         return len(self._features2index)
