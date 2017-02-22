@@ -3,5 +3,3 @@ Extractive-based summarization using a neural network. This is my final project 
 
 The implementation of the MLP is found in the net folder of src/.
 Corpus can be supplied on request. Acheieved around 88-89% accuracy on email summarization - though this is not the end-all metric for ML systems. 
-
-If interested, confusion matrix results can be supplied on request.
